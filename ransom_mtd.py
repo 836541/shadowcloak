@@ -61,7 +61,7 @@ def tratamento_argumentos():
       dir_list = dir_list.lower()
 
   if loop == "true":
-    registry == "false"
+    registry = "false"
    
   mtd,registry,recursive,loop = arg_bool
 
