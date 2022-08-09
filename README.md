@@ -1,4 +1,4 @@
-# Anti-Ransomware-Extensions-MTD
+# AV-ExtensionsMTD
 MTD-Based Ransomware Prevention using new extensions and file associations for files.
 
 
