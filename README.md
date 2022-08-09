@@ -91,19 +91,19 @@ The tool has a standard extension txt file (using WannaCry whitelist) which you 
 START: Create your txts for extensions (or use the standard), directories and whitelist.
 
 (A): Make a ONE TIME RUN with 
--mtd= True    -registry= True   -loop= False
+--mtd= True    --registry= True   --loop= False
 This will rename all files from the choosen directories, create new file associations in registry 
 and will output a file containing all the relations between old extensions and new extensions. Lets call
 that file as OUTPUT.TXT.
 
 (B): Set a LOOP RUN with 
--mtd = True   -loop = True (which makes -registry = False)
--extension = OUTPUT.TXT (IMPORTANT) 
+--mtd = True   --loop = True (which makes --registry = False)
+--extension = OUTPUT.TXT (IMPORTANT) 
 So all new files that appear on the choosen directories will be auto renamed.
 
 (C): Set a LOOP RUN with 
--mtd = False   -loop= True  - extension = OUTPUT.TXT
-This is like (B) but with -mtd = False. So, the point of (C) is inputing -directory a sequence of 
+--mtd = False   --loop= True  -- extension = OUTPUT.TXT
+This is like (B) but with -mtd = False. So, the point of (C) is inputing --directory a sequence of 
 directories which you want to make all files there be auto renamed to standard extensions.
 The point of (C) is having directories which you can drag your files to make them instantly "normal" again so you can share them online with  usual extensions.
 
