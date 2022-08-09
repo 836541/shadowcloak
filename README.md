@@ -31,10 +31,11 @@ takes more CPU power and a module that hides file formats is possible.
 [3] PARAMETERS - PLEASE READ
 
 This tool has SEVEN parameters (TWO of them are optional).
+
 [-m/--mtd=]
 if True: change from standard extensions (.pdf, .mp4...) to new random extensions.
 After the change is made, an output file will be generated containing all the old-new extensions relation
-so you can use it later for reverting changes. Let's call that file as OUTPUT.TXT.
+so you can use it later for reverting changes. Let's call that file as OUTPUT.TXT in the documentation (however it generates a file with 4 letters filenames and no extension).
 if False: change from the new random extensions to standard (.pdf, .mp4...) extensions
 
 [-d/--directory]
