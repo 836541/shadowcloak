@@ -3,9 +3,11 @@ MTD-Based Ransomware Prevention using new extensions and file associations for f
 
 
 Moving Target Defense for Ransomware Prevention
+
 ------------------------------
 [1] What is this tool ? 
 ------------------------------
+
 A Proof of Concept tool based on the article "Ransomware protection using the Moving Target Defense"(SUHYEON, L. & HUY, K. K. & KYOUNGGON, K., 2019)
 The tool changes the extensions of files in the file system for new pseudo random crypto secure ones.
 After that, the new extension is added to the registry. 
@@ -14,9 +16,11 @@ that has the suffix ".pdf" will become ".yuni" and will open like a ".pdf" file.
 that ".pdf" will continue to open normally.
 It exploits the fact that most ransomware searches for files using an extensions whitelist, which makes
 ransomware unable to find protected extensions in a system using this tool.
+
 ---------------------
 [2] Cons 
 ---------------------
+
 (A) Ransomware can bypass if they start to use a blacklist of extensions instead of whitelists.
 
 (B) Ransomware that encrypt using lists of directories can bypass too. However, this type of Ransomware
@@ -83,6 +87,7 @@ The tool has a standard extension txt file (using WannaCry whitelist) which you 
 --------------------------------
 [4] HOW TO USE (READ PLEASE)
 --------------------------------
+
 START: Create your txts for extensions (or use the standard), directories and whitelist.
 
 (A): Make a ONE TIME RUN with 
@@ -105,6 +110,7 @@ The point of (C) is having directories which you can drag your files to make the
 -----------------------------------
 [5] FUTURE IMPROVEMENTS
 -----------------------------------
+
 (A): A few new extensions may not associate with a file type. The reason for that is because I didnt find a way yet to transfer all values from a registry subkey
 like "HKEY_CLASSES_ROOT\\.pdf" to the new one which is going to "replace" it (not really replace because both will still work). This script only transfer the first value it encounters. However, almost always the first value is enough. It's very rare, then when you try to open a file and it dont find its find association you can do it manually ("open with" GUI option) without much effort since fails are unusual.
 
