@@ -28,6 +28,8 @@ a option which allows you to choose directories where all files are renamed to t
 (D) Ransomware can bypass if they start using whitelist of file formats (magic bytes). However, this 
 takes more CPU power and a module that hides file formats is possible.
 
+So, because of the cons, this tool isn't helpful against Advanced Persistent Threats (APTs), but useful against Ransomwares that dont know about the tool existence.
+
 [3] PARAMETERS - PLEASE READ
 
 This tool has SEVEN parameters (TWO of them are optional).
