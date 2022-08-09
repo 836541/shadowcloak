@@ -38,7 +38,7 @@ def optparser():
 def tratamento_argumentos():
 
   def erro():
-    print("Read the documentation")
+    print("Read the documentation or use -h to check available arguments")
     quit()
     return
 
