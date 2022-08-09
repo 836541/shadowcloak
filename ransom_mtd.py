@@ -59,11 +59,11 @@ def tratamento_argumentos():
     
   if dir_list in args_aceitos2:
       dir_list = dir_list.lower()
-
-  if loop == "true":
-    registry = "false"
    
   mtd,registry,recursive,loop = arg_bool
+  
+  if loop == "true":
+    registry = "false"
 
   return (mtd, registry, extension_list, dir_list, recursive, loop, whitelist)
 
