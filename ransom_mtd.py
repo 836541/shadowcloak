@@ -1,3 +1,6 @@
+# /undead_warlock
+# GPL3.0-or-foward
+
 from ctypes import *
 import secrets
 import optparse
