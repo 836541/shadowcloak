@@ -14,7 +14,7 @@ After that, the new extension is added to the registry.
 For example, if the tool chooses ".yuni" to substitute ".pdf", then all files from a given directory 
 that has the suffix ".pdf" will become ".yuni" and will open like a ".pdf" file. It's important to say
 that ".pdf" will continue to open normally.
-It exploits the fact that most ransomware searches for files using an extensions whitelist, which makes
+It exploits the fact that most ransomware searches for files using an extensions whitelist, which makes this type of
 ransomware unable to find protected extensions in a system using this tool.
 
 ---------------------
