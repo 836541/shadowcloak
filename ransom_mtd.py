@@ -32,15 +32,8 @@ def optparser():
     parser.add_option("-w", "--whitelist", dest = whitelist, default = None, help = " .txt or None")
 
     (inputs,args) = parser.parse_args()
-    mtd            = inputs.mtd
-    registry       = inputs.registry
-    extension_list = inputs.extension_list
-    dir_list       = inputs.dir_list
-    recursive      = inputs.recursive
-    loop           = inputs.loop
-    whitelist      = inputs.whitelist
 
-    return (mtd, registry, extension_list, dir_list, recursive, loop, whitelist)
+    return (inputs.mtd, inputs.registry, inputs.extension_list, inputs.dir_list, inputs.recursive, inputs.loop, inputs.whitelist)
 #############################################################################################
 def tratamento_argumentos():
 
