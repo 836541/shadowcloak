@@ -100,4 +100,13 @@ directories which you want to make all files there be auto renamed to standard e
 The point of (C) is having directories which you can drag your files to make them instantly "normal" again so you can share them online with  usual extensions.
 
 
+[5] FUTURE IMPROVEMENTS
+
+(A): A few new extensions may not associate with a file type. The reason for that is because I didnt find a way yet to transfer all values from a registry subkey
+like "HKEY_CLASSES_ROOT\.pdf" to the new one which is going to "replace" it (not really replace because both will still work). This script only transfer the first value it encounters. However, almost always the first value is enough. It's very rare, then when you try to open a file and it dont find its find association you can do it manually ("open with" GUI option) without much effort since fails are unusual.
+
+(B): File type (magic bytes) MTD module.
+
+(C): More readable code (this software has some ugly variables).
+
 
