@@ -18,10 +18,13 @@ ransomware unable to find protected extensions in a system using this tool.
 [2] Cons 
 
 (A) Ransomware can bypass if they start to use a blacklist of extensions instead of whitelists.
+
 (B) Ransomware that encrypt using lists of directories can bypass too. However, this type of Ransomware
 is more fragile against Decoy/Deception solutions.
+
 (C) Files with extensions that work only in your environment aren't too shareable. However, the tool has
 a option which allows you to choose directories where all files are renamed to the standard extensions again.
+
 (D) Ransomware can bypass if they start using whitelist of file formats (magic bytes). However, this 
 takes more CPU power and a module that hides file formats is possible.
 
@@ -74,7 +77,7 @@ extension 1, extension2 ... extension x ,
 .pdf, .mp4 , .docx,
 The tool has a standard extension txt file (using WannaCry whitelist) which you can use or observe the syntax to create your own.
 
------------------------
+
 [4] HOW TO USE (READ PLEASE)
 
 START: Create your txts for extensions (or use the standard), directories and whitelist.
