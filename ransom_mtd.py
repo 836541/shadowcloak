@@ -81,10 +81,11 @@ def extension_lister(extension_list, mtd, loop):
 
     extensions_old = []
     extensions_new = []
-
+    
+    with open(extension_list, "r") as extensions_archive:
+        dump = extensions_archive.read()
+         
     if mtd == "true" and loop == "false":
-        with open(extension_list, "r") as arquivo:
-            dump = arquivo.read()
 
         ext_3letras = re.findall(r"((\.\w{3})\s*,)", dump)
         ext_4letras = re.findall(r"((\.\w{4})\s*,)", dump)
@@ -97,8 +98,6 @@ def extension_lister(extension_list, mtd, loop):
 
 
     if mtd == "true" and loop == "true":
-      with open(extension_list, "r") as extdump:
-        dump = extdump.read()
 
       extregex       = re.findall(r"((\.\w*):(\.\w*)\|)", dump)
       extensions_old = [ext[1] for ext in extregex]
@@ -106,8 +105,6 @@ def extension_lister(extension_list, mtd, loop):
 
 
     if mtd == "false":
-        with open(extension_list, "r") as fileread:
-            dump = fileread.read()
 
         extregex       = re.findall(r"((\.\w*):(\.\w*)\|)", dump)
         extensions_old = [exten[2] for exten in extregex]
