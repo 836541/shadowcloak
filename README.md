@@ -14,7 +14,7 @@ that has the suffix ".pdf" will become ".yuni" and will open like a ".pdf" file.
 that ".pdf" will continue to open normally.
 It exploits the fact that most ransomware searches for files using an extensions whitelist, which makes
 ransomware unable to find protected extensions in a system using this tool.
----------------------------------------------------
+
 [2] Cons 
 
 (A) Ransomware can bypass if they start to use a blacklist of extensions instead of whitelists.
@@ -24,7 +24,7 @@ is more fragile against Decoy/Deception solutions.
 a option which allows you to choose directories where all files are renamed to the standard extensions again.
 (D) Ransomware can bypass if they start using whitelist of file formats (magic bytes). However, this 
 takes more CPU power and a module that hides file formats is possible.
--------------------------------------
+
 [3] PARAMETERS - PLEASE READ
 
 This tool has SEVEN parameters (TWO of them are optional).
