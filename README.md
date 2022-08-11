@@ -119,3 +119,4 @@ like "HKEY_CLASSES_ROOT\\.pdf" to the new one which is going to "replace" it (no
 (C): More readable code (this software has some ugly variables).
 
 
+
