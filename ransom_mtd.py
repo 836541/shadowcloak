@@ -160,7 +160,7 @@ def dir_lister(recursive, extension_list, mtd, loop, dir_list=None, whitelist=No
                 for extensao in extensions[0]:
                     if extensao in arquivo:
                         filtered_list += [arquivo]
-                print(filtered_list)
+                
 
     if whitelist:
         with open(whitelist, "r") as arquivoo:
