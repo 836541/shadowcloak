@@ -42,21 +42,23 @@ def tratamento_argumentos():
     quit()
     return
 
-  args_aceitos1 = ["True", "False", "false", "true", "TRUE", "FALSE"]
+  args_aceitos1 = ["false", "true"]
   args_aceitos2 = ["None", "NONE", "none"]
 
   (mtd, registry, extension_list, dir_list, recursive, loop, whitelist) = optparser()
   arg_bool  = [mtd] + [registry] + [recursive] + [loop]
 
-  for arg in arg_bool: 
-    if arg not in args_aceitos1:
-        erro()
-        quit()
-    else:
+  for arg in arg_bool:
+    try: 
         index = arg_bool.index(arg)
         arg_bool[index] = arg_bool[index].lower()
-        
-    
+        if arg not in args_aceitos1:
+            erro()
+       
+    except:
+          erro()
+     
+            
   if dir_list in args_aceitos2:
       dir_list = dir_list.lower()
    
