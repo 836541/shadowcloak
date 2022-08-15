@@ -26,7 +26,7 @@ def optparser():
     parser.add_option("-m", "--mtd", dest = mtd, help = "True | False")
     parser.add_option("-r", "--registry", dest= registry, help = "True | False" )
     parser.add_option("-e", "--extension", dest = extension_list, help= " .txt ")
-    parser.add_option("-d", "--directory", dest = dir_list, help = " .txt or None")
+    parser.add_option("-d", "--directory", dest = dir_list, default= None, help = " .txt or None")
     parser.add_option("-s", "--subdirs", dest = recursive, help = "True | False ")
     parser.add_option("-l", "--loop", dest = loop, help = "True | False ")
     parser.add_option("-w", "--whitelist", dest = whitelist, default = None, help = " .txt or None")
@@ -43,7 +43,6 @@ def tratamento_argumentos():
     return
 
   args_aceitos1 = ["false", "true"]
-  args_aceitos2 = ["None", "NONE", "none"]
 
   (mtd, registry, extension_list, dir_list, recursive, loop, whitelist) = optparser()
   arg_bool  = [mtd] + [registry] + [recursive] + [loop]
@@ -52,22 +51,20 @@ def tratamento_argumentos():
     try: 
         index = arg_bool.index(arg)
         arg_bool[index] = arg_bool[index].lower()
-        if arg not in args_aceitos1:
+        if arg_bool[index] not in args_aceitos1:
+            print(arg)
             erro()
        
     except:
           erro()
      
-            
-  if dir_list in args_aceitos2:
-      dir_list = dir_list.lower()
    
   mtd,registry,recursive,loop = arg_bool
   
   if loop == "true":
     registry = "false"
       
-  if registry = "true" and not ctypes.windll.shell32.IsUserAnAdmin():
+  if registry == "true" and not windll.shell32.IsUserAnAdmin():
        print("[X] If you want to add the file associations to Registry, make sure to run this script with special privileges")
        quit()
 
@@ -128,7 +125,7 @@ def dir_lister(recursive, extension_list, mtd, loop, dir_list=None, whitelist=No
     whitelist_files = []
 
 
-    if dir_list == None or dir_list == "none":
+    if dir_list == None:
 
 
         for (dirpath, dirnames, filenames) in os.walk("C:\\"):
@@ -160,9 +157,10 @@ def dir_lister(recursive, extension_list, mtd, loop, dir_list=None, whitelist=No
                     file_list += [os.path.join(dirpath, file) for file in filenames]
 
             for arquivo in file_list:
-                for extensao in extensions:
+                for extensao in extensions[0]:
                     if extensao in arquivo:
                         filtered_list += [arquivo]
+                print(filtered_list)
 
     if whitelist:
         with open(whitelist, "r") as arquivoo:
