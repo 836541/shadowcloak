@@ -64,6 +64,10 @@ def tratamento_argumentos():
   
   if loop == "true":
     registry = "false"
+      
+  if registry = "true" and not ctypes.windll.shell32.IsUserAnAdmin():
+       print("[X] If you want to add the file associations to Registry, make sure to run this script with special privileges")
+       quit()
 
   return (mtd, registry, extension_list, dir_list, recursive, loop, whitelist)
 
