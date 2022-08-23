@@ -2,7 +2,7 @@
 MTD-Based Ransomware Prevention using new extensions and file associations for files.
 
 
-Moving Target Defense for Ransomware Prevention
+Moving Target Defense against Whitelist-Based Ransomware.
 
 ------------------------------
 [1] What is this tool ? 
