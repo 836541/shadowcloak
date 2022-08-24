@@ -13,23 +13,14 @@ import re
 ##############################################################################
 def optparser():
    
-    mtd            = "mtd"
-    registry       = "registry"
-    extension_list = "extension_list"
-    dir_list       = "dir_list"
-    recursive      = "recursive"
-    loop           = "loop"
-    whitelist      = "whitelist"
-    
-
     parser = optparse.OptionParser()
-    parser.add_option("-m", "--mtd", dest = mtd, help = "True | False")
-    parser.add_option("-r", "--registry", dest= registry, help = "True | False" )
-    parser.add_option("-e", "--extension", dest = extension_list, help= " .txt ")
-    parser.add_option("-d", "--directory", dest = dir_list, default= None, help = " .txt or None")
-    parser.add_option("-s", "--subdirs", dest = recursive, help = "True | False ")
-    parser.add_option("-l", "--loop", dest = loop, help = "True | False ")
-    parser.add_option("-w", "--whitelist", dest = whitelist, default = None, help = " .txt or None")
+    parser.add_option("-m", "--mtd", dest = "mtd", help = "True | False")
+    parser.add_option("-r", "--registry", dest= "registry", help = "True | False" )
+    parser.add_option("-e", "--extension", dest = "extension_list", help= " .txt ")
+    parser.add_option("-d", "--directory", dest = "dir_list", default= None, help = " .txt or None")
+    parser.add_option("-s", "--subdirs", dest = "recursive", help = "True | False ")
+    parser.add_option("-l", "--loop", dest = "loop", help = "True | False ")
+    parser.add_option("-w", "--whitelist", dest = "whitelist", default = None, help = " .txt or None")
 
     (inputs,args) = parser.parse_args()
 
@@ -80,27 +71,33 @@ def confirmar():
     return
 #########################################################################################
 
+def readFile(file, access, readmode):   #readmode 2 -> read()
+                                                # 3 -> splitlines()
+    if "r" in access:
+        with open(file, access) as readfile:
+            if readmode == 2:
+                content = readfile.read()
+            if readmode == 3:
+                content = readfile.read().splitlines()
+
+        return content 
+
+    else: 
+        return 0
+#########################################################################
+
 def extension_lister(extension_list, mtd, loop):
 
     extensions_old = []
     extensions_new = []
-    
-    with open(extension_list, "r") as extensions_archive:
-        dump = extensions_archive.read()
-         
+           
     if mtd == "true" and loop == "false":
 
-        ext_3letras = re.findall(r"((\.\w{3})\s*,)", dump)
-        ext_4letras = re.findall(r"((\.\w{4})\s*,)", dump)
+        extensions_old = readFile(extension_list, "r", 3) 
 
-        lista_3letras = [u[1] for u in ext_3letras]
-        lista_4letras = [m[1] for m in ext_4letras]
-
-        extensions_old += lista_3letras
-        extensions_old += lista_4letras
-
-
+   
     if mtd == "true" and loop == "true":
+      dump = readFile(extension_list, "r", 2)
 
       extregex       = re.findall(r"((\.\w*):(\.\w*)\|)", dump)
       extensions_old = [ext[1] for ext in extregex]
@@ -108,7 +105,8 @@ def extension_lister(extension_list, mtd, loop):
 
 
     if mtd == "false":
-
+        dump = readFile(extension_list, "r", 2)
+        
         extregex       = re.findall(r"((\.\w*):(\.\w*)\|)", dump)
         extensions_old = [exten[2] for exten in extregex]
         extensions_new = [ext[1] for ext in extregex]
@@ -139,11 +137,7 @@ def dir_lister(recursive, extension_list, mtd, loop, dir_list=None, whitelist=No
                 
     else:
         
-        with open(dir_list, "r") as arquivo:
-            directory = arquivo.read()
-
-        directory_regex = re.findall(r"((C:.*\w)\s*,)", directory)
-        directory_list  = [k[1] for k in directory_regex]
+        directory_list = readFile(dir_list, "r", 3)
         
         if recursive == "false":
             for j in directory_list:
@@ -163,14 +157,9 @@ def dir_lister(recursive, extension_list, mtd, loop, dir_list=None, whitelist=No
                 
 
     if whitelist:
-        with open(whitelist, "r") as arquivoo:
-            wlist  = arquivoo.read()
-            
-        whitelist_dirs  = [g[1] for g in re.findall(r"((C:.*\w)\s*,)", wlist)]
-        whitelist_files = [c[1] for c in re.findall(r"((\w*\.\w*)\s*,)",wlist)]
-        white_list      = whitelist_dirs + whitelist_files
-
-        for wstring in white_list:
+        wlist = readFile(whitelist, "r", 3)
+        
+        for wstring in wlist:
             for filtered_file in filtered_list:
                 if wstring in filtered_file:
                     index = filtered_list.index(filtered_file)
@@ -246,10 +235,11 @@ class Extension:
                 except:
                     pass
 
-          files = dir_lister(recursive, extension_list, mtd, loop, dir_list, whitelist)
 
           if loop == "false":
              loop_flag = 0
+          else: 
+            files = dir_lister(recursive, extension_list, mtd, loop, dir_list, whitelist)
 
                 
 #######################################################################
