@@ -41,15 +41,17 @@ This tool has SEVEN parameters (TWO of them are optional).
 [-m/--mtd=]
 if True: change from standard extensions (.pdf, .mp4...) to new random extensions.
 After the change is made, an output file will be generated containing all the old-new extensions relation
-so you can use it later for reverting changes. Let's call that file as OUTPUT.TXT in the documentation (however it generates a file with 4 letters filenames and no extension).
+so you can use it later for reverting changes. Let's call that file as OUTPUT in the documentation (however it generates a file with 4 letters filenames and no extension).
 if False: change from the new random extensions to standard (.pdf, .mp4...) extensions
 
 [-d/--directory]
 (file.txt): Input here a txt file containing the directories you want to change the files.
-Syntax is a sequence of directories which in the end of each one there's a comma (including the last)
-Example:
-C:\Users, C:\Windows\system32 , C:\Program Files,
-(if --directory = None): The tool will use "C:\".
+Syntax is simples: one directory per line and nothing more. Example:
+C:\Windows
+
+C:\Users\Admin
+
+C:\Windows\system32
 
 [-s/--subdirs ]
 (if True): recursive search of files in the directories. For example, a recursive search in C:\ will list
@@ -58,12 +60,16 @@ every single file of the disk volume.
 
 [-w/--whitelist]
 (whitelist.txt): A txt file containing all the directories that shall not have the files listed.
-Each item shall end with a comma.
 Useful if you want to do a recursive search but dont want certain directories to be affected.
 You can also write filenames here.
-Example:
-C:\Users\Admin\Desktop, C:\Windows , valorant.exe , 
-(if --whitelist = None): No whitelis will be used.
+Write one directory/filename in each line. Example:
+
+C:\Users\Admin
+
+ransomware.py
+
+valorant.exe
+
 
 [-r/--registry] (only works if --mtd = True)
 (if True): after changing the extension, each new extension will also be added to registry to create new file associations.
@@ -74,14 +80,18 @@ C:\Users\Admin\Desktop, C:\Windows , valorant.exe ,
 choosen directory.
 (if False): the software will run just one time. 
 if --registry = True, --loop is set to False.
-LOOP RUNS MUST HAVE THE OUTPUT.TXT FILE AS -directory ARGUMENT
+LOOP RUNS MUST HAVE THE OUTPUT FILE AS -directory ARGUMENT
 
 [-e/--extension]: 
 (extensions.txt) Input here a file where the extensions you want to protect are written.
-The syntax of the file is a sequences of extensions followed by commas (including the last extension of the sequence)
-Example is a txt file with:
-extension 1, extension2 ... extension x , 
-.pdf, .mp4 , .docx,
+Example:
+
+.pdf
+
+.docx
+
+.mp3
+
 The tool has a standard extension txt file (using WannaCry whitelist) which you can use or observe the syntax to create your own.
 
 --------------------------------
@@ -94,7 +104,7 @@ START: Create your txts for extensions (or use the standard), directories and wh
 --mtd= True    --registry= True   --loop= False
 This will rename all files from the choosen directories, create new file associations in registry 
 and will output a file containing all the relations between old extensions and new extensions. Lets call
-that file as OUTPUT.TXT.
+that file as OUTPUT.
 
 (B): Set a LOOP RUN with 
 --mtd = True   --loop = True (which makes --registry = False)
